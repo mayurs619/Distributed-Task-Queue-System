@@ -1,0 +1,17 @@
+# Ignore target directories (Maven builds)
+**/target/
+**/build/
+
+# Ignore node_modules
+dashboard/node_modules/
+dashboard/.next/
+dashboard/out/
+
+# Ignore local environment files (CRITICAL)
+.env
+.env.local
+.DS_Store
+
+# Ignore IDE files
+.vscode/
+.idea/

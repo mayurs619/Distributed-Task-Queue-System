@@ -1,0 +1,64 @@
+services:
+
+  task_db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: queue_user
+      POSTGRES_PASSWORD: queue_password
+      POSTGRES_DB: task_queue_db
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  task_redis:
+    image: redis:7-alpine
+
+    ports:
+      - "6379:6379"
+
+  producer-api:
+    build: ./producerapi
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - task_db
+      - task_redis
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://task_db:5432/task_queue_db
+      SPRING_DATA_REDIS_HOST: task_redis
+
+  worker-service:
+    build: ./worker-service
+
+    ports:
+      - "8081:8080"
+
+    depends_on:
+      - task_db
+      - task_redis
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://task_db:5432/task_queue_db
+      SPRING_DATA_REDIS_HOST: task_redis
+
+  prometheus:
+    image: prom/prometheus
+
+    ports:
+      - "9090:9090"
+
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+    depends_on:
+      - producer-api
+      - worker-service
+
+volumes:
+  pgdata:
