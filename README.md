@@ -4,7 +4,7 @@
 A production-grade, asynchronous task processing architecture designed for high availability and fault tolerance. This system decouples heavy request ingestion from background processing, ensuring reliable execution through an "in-flight" queue pattern, exponential backoff, and automated dead-letter routing.
 
 ## Live Demo
-**Operations Dashboard:** [Insert Your Vercel URL Here]
+**Operations Dashboard:** https://distributed-task-queue-system-alpha.vercel.app/
 
 *(Note: The backend is hosted on a free Render tier, which spins down after 15 minutes of inactivity. Please allow 30-60 seconds for the initial API container to boot up when making your first request).*
 
