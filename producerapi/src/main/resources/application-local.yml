@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_queue_db
+    username: your_local_user
+    password: your_local_password
+  data:
+    redis:
+      host: localhost
+      port: 6379
