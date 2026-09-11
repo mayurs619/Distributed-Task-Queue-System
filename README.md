@@ -6,7 +6,7 @@ A production-grade, asynchronous task processing architecture designed for high 
 ## Live Demo
 **Operations Dashboard:** https://distributed-task-queue-system-alpha.vercel.app/
 
-*(Note: The backend is hosted on a free Render tier, which spins down after 15 minutes of inactivity. Please allow 30-60 seconds for the initial API container to boot up when making your first request).*
+*(Note: The backend is hosted on a free Render tier, which spins down after 15 minutes of inactivity. Please allow 30-60 seconds for the initial API container to boot up when making your first request; this has since expired and while the frontend does work the background apis are not currently active).*
 
 ## System Architecture
 The following diagram illustrates the flow of jobs through the system, from the API ingestion point to persistent state storage.
